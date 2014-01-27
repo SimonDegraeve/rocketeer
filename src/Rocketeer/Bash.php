@@ -319,8 +319,9 @@ class Bash extends AbstractLocatorClass
 	 */
 	public function fileExists($file)
 	{
-		$exists = $this->runRaw('if [ -e ' .$file. ' ]; then echo "true"; fi');
-
+		//$exists = $this->runRaw('if [ -e ' .$file. ' ]; then echo "true"; fi');
+		$exists = $this->runRaw('[ -e ' .$file. ' ] && echo "true"');
+		
 		return trim($exists) == 'true';
 	}
 
